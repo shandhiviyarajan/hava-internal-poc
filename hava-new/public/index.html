@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="designerz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Viewer</title>
+    <script   type="text/javascript" src="/node_modules/hava-viewer/node_modules/jquery/dist/jquery.js"></script>
+    <script  type="text/javascript" src="/node_modules/angular/angular.js"></script>
+    <link rel="stylesheet" href="/node_modules/hava-fonts/dist/hava.designer.fonts.css"/>
+    <link rel="stylesheet" href="/dist/hava.designer.css"/>
+
+    <style type="text/css">
+        html,body,.ng-app{
+            margin:0px;
+            padding:0px;
+            height:100%;
+        }
+        .designer-content{
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hava-new-react"></div>
+<script type="text/javascript" src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="/dist/hava.designer.vendor.js"></script>
+<script type="text/javascript" src="/dist/hava.designer.js"></script>
+<script type="text/javascript" src="/dist/hava.designer.templates.js"></script>
+<script type="text/javascript" src="/assets/environments/default.js"></script>
+<script>
+
+       window.hava_app = function(){
+           angular.module("designerz", [
+               "designer",
+               "designer.configuration"
+           ])
+
+               .run(["$rootScope", "DesignerConfig", function ($rootScope, DesignerConfig) {
+                   DesignerConfig.set("enable3DView", false);
+                   DesignerConfig.set("exportFormats", ["pdf", "png", "vsdx", "csv", "json"]);
+
+                   DesignerConfig.set("defaultView", "defaultView");
+                   DesignerConfig.set("allowEmbed", true);
+                   DesignerConfig.set("allowableViews", '');
+                   DesignerConfig.set("showRevisions", true);
+                   DesignerConfig.set("showExport", true);
+                   // DesignerConfig.set('showControls',true);
+                   $rootScope.design = defaultDesign;
+               }]);
+       }
+</script>
+
+</body>
+</html>
